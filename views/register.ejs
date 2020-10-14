@@ -7,13 +7,13 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-5 col-md-7">
-                            <h2>Create an account</h2> <span>Already have an account? <a href="#">Sign In</a></span>
+                            <h2>Create an account</h2> <span>Already have an account? <a href="/login">Sign In</a></span>
                             <hr class="short">
-                            <form>
+                            <form action="/register" method="POST">
                                 <div class="row">
-                                    <div class="col-12"> <input type="text" name="First Name" placeholder="Your Name"> </div>
-                                    <div class="col-12"> <input type="email" name="Email Address" placeholder="Email Address"> </div>
-                                    <div class="col-12"> <input type="password" name="Password" placeholder="Password"> </div>
+                                    <div class="col-12"> <input type="text" name="username" placeholder="Username"> </div>
+                                    <div class="col-12"> <input type="email" name="email" placeholder="Email Address"> </div>
+                                    <div class="col-12"> <input type="password" name="password" placeholder="Password"> </div>
                                     <div class="col-12"> <input type="password" name="Password-confirm" placeholder="Confirm Password"> </div>
                                     <div class="col-12">
                                         <div class="input-checkbox"> <input type="checkbox" name="agree"> <label></label> </div> <span>Remember Me</span> </div>

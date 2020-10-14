@@ -37,10 +37,11 @@
                 <div class="notification pos-right pos-top side-menu bg--white" data-notification-link="sidebar-menu" data-animation="from-right">
                     <div class="side-menu__module pos-vertical-center text-right">
                         <ul class="menu-vertical">
-                            <li class="h4"> <a href="#">Feed<br></a> </li>
-                            <li class="h4"> <a href="#">Rezepte<br></a> </li>
-                            <li class="h4"> <a href="#">Profil<br></a> </li>
-                            <li class="h4"> <a href="#">Logout<br></a> </li>
+                            <li class="h4"> <a href="/feed">Feed<br></a> </li>
+                            <li class="h4"> <a href="/campgrounds">Rezepte<br></a> </li>
+							<li class="h4"> <a href="/campgrounds/new">Neues Rezept<br></a> </li>
+                            <li class="h4"> <a href="/users/:id/private">Profil<br></a> </li>
+                            <li class="h4"> <a href="/logout">Logout<br></a> </li>
                         </ul>
                     </div>
                     <div class="side-menu__module pos-bottom pos-absolute col-12 text-right">
@@ -57,3 +58,17 @@
 		<div>
 			
 		</div>
+	<div class="container">
+		<%if(error && error.length > 0){ %>
+		<div class="alert alert-danger" role="alert">
+  <%= error %>
+</div>
+	<%	} %>
+		<% if(success && success.length > 0){%>
+			<div class="alert alert-success" role="alert">
+  <%= success %>
+</div>
+	<%	} %>
+	
+	
+	</div>

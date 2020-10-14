@@ -16,11 +16,8 @@ router.get("/register", function(req, res){
 router.post("/register", function(req, res){
     var newUser = new User({
         username: req.body.username,
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
         email: req.body.email,
-        avatar: req.body.avatar
-      });
+              });
 
 	if(req.body.adminCode === "secretcode123"){
 		newUser.isAdmin = true;
@@ -78,7 +75,7 @@ router.get("/users/:id/private", middleware.isLoggedIn, function(req, res) {
       req.flash("error", "Something went wrong.");
       return res.redirect("/");
     }
-    res.locals.currentUser.equals(foundUser._id).exec(function(err, campgrounds) {
+    res.locals.currentUser._id.equals(foundUser._id).exec(function(err, campgrounds) {
       if(err) {
         req.flash("error", "Something went wrong.");
         return res.redirect("/");
