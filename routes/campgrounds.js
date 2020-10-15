@@ -4,7 +4,7 @@ var Campground =require("../models/campground");
 var middleware =require("../middleware")
 
 //NEw show form to create new Campground
-router.get("/new",middleware.isLoggedIn, function(req, res){
+router.get("/new", middleware.isLoggedIn, function(req, res){
 	res.render("campgrounds/new");
 })
 //Index Show all campgrounds

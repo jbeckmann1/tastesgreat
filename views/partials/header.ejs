@@ -4,15 +4,16 @@
         <meta charset="utf-8">
         <title></title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="css/stack-interface.css" rel="stylesheet" type="text/css" media="all">
-        <link href="css/socicon.css" rel="stylesheet" type="text/css" media="all" />
+		<link href="../fontawesome/css/all.css" rel="stylesheet">
+		<link href="../css/stack-interface.css" rel="stylesheet" type="text/css" media="all">
+        <link href="../css/socicon.css" rel="stylesheet" type="text/css" media="all" />
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-        <link href="css/stack-interface.css" rel="stylesheet" type="text/css" media="all" />
-        <link href="css/theme.css" rel="stylesheet" type="text/css" media="all" />
-        <link href="css/custom.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="../css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="../css/stack-interface.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="../css/theme.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="../css/custom.css" rel="stylesheet" type="text/css" media="all" />
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:200,300,400,400i,500,600,700" rel="stylesheet">
-		<link rel="stylesheet" href="../../node_modules/@fortawesome/fontawesome-free/css/font-awesome.min.css">
+		<link rel="stylesheet" href="../node_modules/@fortawesome/fontawesome-free/css/font-awesome.min.css">
 
     </head>
     <body data-smooth-scroll-offset="77">
@@ -23,7 +24,7 @@
                         <div class="row align-items-center">
                             <div class="col-6">
                                 <div class="bar__module">
-                                    <a href="/"> <img class="logo logo-dark" alt="logo" src="img/logo-dark.png"> <img class="logo logo-light" alt="logo" src="img/logo-light.png"></i> </a>
+									<a href="/"> <h3> <i class="fab fa-envira" id="navicon"></i> | TastesGreat</h3></a>
                                 </div>
                             </div>
                             <div class="col-6 d-flex justify-content-end">
@@ -37,11 +38,16 @@
                 <div class="notification pos-right pos-top side-menu bg--white" data-notification-link="sidebar-menu" data-animation="from-right">
                     <div class="side-menu__module pos-vertical-center text-right">
                         <ul class="menu-vertical">
-                            <li class="h4"> <a href="/feed">Feed<br></a> </li>
                             <li class="h4"> <a href="/campgrounds">Rezepte<br></a> </li>
+						<% if(!currentUser){ %>
+							 <li class="h4"> <a href="/register">SignUp<br></a> </li>
+                            <li class="h4"> <a href="/login">LogIn<br></a> </li>
+							  <% } else { %>
+							<li class="h4"> <a href="/feed">Feed<br></a> </li>
 							<li class="h4"> <a href="/campgrounds/new">Neues Rezept<br></a> </li>
-                            <li class="h4"> <a href="/users/:id/private">Profil<br></a> </li>
+                            <li class="h4"> <a href="/users/:id">Profil<br></a> </li>
                             <li class="h4"> <a href="/logout">Logout<br></a> </li>
+							  <% } %>
                         </ul>
                     </div>
                     <div class="side-menu__module pos-bottom pos-absolute col-12 text-right">
@@ -58,6 +64,169 @@
 		<div>
 			
 		</div>
+	<div class="main-container">
+		<section>
+		<div class="container">
+		<%if(error && error.length > 0){ %>
+		<div class="alert alert-danger" role="alert">
+  <%= error %>
+</div>
+	<%	} %>
+		<% if(success && success.length > 0){%>
+			<div class="alert alert-success" role="alert">
+  <%= success %>
+</div>
+	<%	} %>
+	
+	
+	
+	
+	
+<!-- <!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/stack-interface.css" rel="stylesheet" type="text/css" media="all">
+        <link href="css/socicon.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="css/iconsmind.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="css/flickity.css" rel="stylesheet" type="text/css" media="all" />
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="css/stack-interface.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="css/theme.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="css/custom.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:200,300,400,400i,500,600,700" rel="stylesheet">
+
+    </head>
+    <body data-smooth-scroll-offset="77">
+        <div class="nav-container">
+            <div class="via-1602680609265" via="via-1602680609265" vio="MyNav">
+                <nav class="bar bar-toggle">
+                    <div class="container">
+                        <div class="row align-items-center">
+                            <div class="col-6">
+                                <div class="bar__module">
+                                    <a href="index.html"> <img class="logo logo-dark" alt="logo" src="img/logo-dark.png"> <img class="logo logo-light" alt="logo" src="img/logo-light.png"> </a>
+                                </div>
+                            </div>
+                            <div class="col-6 d-flex justify-content-end">
+                                <div class="bar__module">
+                                    <a class="menu-toggle pull-right" href="#" data-notification-link="sidebar-menu"> <i class="stack-interface stack-menu"></i> </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+                <div class="notification pos-right pos-top side-menu bg--white" data-notification-link="sidebar-menu" data-animation="from-right">
+                    <div class="side-menu__module pos-vertical-center text-right">
+                      <ul class="menu-vertical">
+                            <li class="h4"> <a href="/campgrounds">Rezepte<br></a> </li>
+						<% if(!currentUser){ %>
+							 <li class="h4"> <a href="/register">SignUp<br></a> </li>
+                            <li class="h4"> <a href="/login">LogIn<br></a> </li>
+							  <% } else { %>
+							<li class="h4"> <a href="/feed">Feed<br></a> </li>
+							<li class="h4"> <a href="/campgrounds/new">Neues Rezept<br></a> </li>
+                            <li class="h4"> <a href="/users/:id">Profil<br></a> </li>
+                            <li class="h4"> <a href="/logout">Logout<br></a> </li>
+							  <% } %>
+                        </ul>
+                    </div>
+                    <div class="side-menu__module pos-bottom pos-absolute col-12 text-right">
+                        <ul class="social-list list-inline list--hover">
+                            <li><a href="#"><i class="socicon socicon-google icon icon--xs"></i></a></li>
+                            <li><a href="#"><i class="socicon socicon-twitter icon icon--xs"></i></a></li>
+                            <li><a href="#"><i class="socicon socicon-facebook icon icon--xs"></i></a></li>
+                            <li><a href="#"><i class="socicon socicon-instagram icon icon--xs"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main-container">
+			<div class="container">
+				<%if(error && error.length > 0){ %>
+		<div class="alert alert-danger" role="alert">
+  <%= error %>
+</div>
+	<%	} %>
+		<% if(success && success.length > 0){%>
+			<div class="alert alert-success" role="alert">
+  <%= success %>
+</div>
+	<%	} %>
+			</div>
+			
+			
+	<!-- <!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link href="css/stack-interface.css" rel="stylesheet" type="text/css" media="all">
+        <link href="css/socicon.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="css/iconsmind.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="css/flickity.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="css/stack-interface.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="css/theme.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="css/custom.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:200,300,400,400i,500,600,700" rel="stylesheet">
+
+    </head>
+    <body data-smooth-scroll-offset="77">
+        <div class="nav-container">
+            <div class="via-1602680609265" via="via-1602680609265" vio="MyNav">
+                <nav class="bar bar-toggle">
+                    <div class="container">
+                        <div class="row align-items-center">
+                            <div class="col-6">
+                                <div class="bar__module">
+                                    <a href="/"> <img class="logo logo-dark" alt="logo" src="img/logo-dark.png"> <img class="logo logo-light" alt="logo" src="img/logo-light.png"></a>
+                                </div>
+                            </div>
+                            <div class="col-6 d-flex justify-content-end">
+                                <div class="bar__module">
+                                    <a class="menu-toggle pull-right" href="#" data-notification-link="sidebar-menu"> <i class="stack-interface stack-menu"></i> </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+                <div class="notification pos-right pos-top side-menu bg--white" data-notification-link="sidebar-menu" data-animation="from-right">
+                    <div class="side-menu__module pos-vertical-center text-right">
+                        <ul class="menu-vertical">
+                            <li class="h4"> <a href="/campgrounds">Rezepte<br></a> </li>
+						<% if(!currentUser){ %>
+							 <li class="h4"> <a href="/register">SignUp<br></a> </li>
+                            <li class="h4"> <a href="/login">LogIn<br></a> </li>
+							  <% } else { %>
+							<li class="h4"> <a href="/feed">Feed<br></a> </li>
+							<li class="h4"> <a href="/campgrounds/new">Neues Rezept<br></a> </li>
+                            <li class="h4"> <a href="/users/:id/private">Profil<br></a> </li>
+                            <li class="h4"> <a href="/logout">Logout<br></a> </li>
+							  <% } %>
+                        </ul>
+                    </div>
+                    <div class="side-menu__module pos-bottom pos-absolute col-12 text-right">
+                        <ul class="social-list list-inline list--hover">
+							<li><a href="#"><i class="socicon socicon-google icon icon--xs"></i></a></li>
+                            <li><a href="#"><i class="socicon socicon-twitter icon icon--xs"></i></a></li>
+                            <li><a href="#"><i class="socicon socicon-facebook icon icon--xs"></i></a></li>
+                            <li><a href="#"><i class="socicon socicon-instagram icon icon--xs"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+		<div>
+			
+		</div>
+ <div class="main-container">
+    <section>
 	<div class="container">
 		<%if(error && error.length > 0){ %>
 		<div class="alert alert-danger" role="alert">
@@ -71,4 +240,5 @@
 	<%	} %>
 	
 	
-	</div>
+
+			 -->

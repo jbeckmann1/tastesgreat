@@ -8,6 +8,10 @@ var middleware =require("../middleware")
 router.get("/", function(req, res){
     res.render("landing");
 });
+router.get("/ux", function(req, res){
+    res.render("users/show");
+	
+});
 //show register form
 router.get("/register", function(req, res){
     res.render("register");
@@ -69,20 +73,8 @@ router.get("/users/:id", function(req, res) {
     })
   });
 });
-router.get("/users/:id/private", middleware.isLoggedIn, function(req, res) {
-  User.findById(req.params.id, function(err, foundUser) {
-    if(err) {
-      req.flash("error", "Something went wrong.");
-      return res.redirect("/");
-    }
-    res.locals.currentUser._id.equals(foundUser._id).exec(function(err, campgrounds) {
-      if(err) {
-        req.flash("error", "Something went wrong.");
-        return res.redirect("/");
-      }
-      res.render("users/private", {user: foundUser, campgrounds: campgrounds});
-    })
-  });
-});
+router.get("/feed", function(req, res){
+    res.render("feed");
+	});
 
 module.exports = router;
