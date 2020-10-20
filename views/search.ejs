@@ -1,0 +1,39 @@
+<%- include("partials/header") %>
+
+
+<form  id="example-advanced-form" action="#">
+	<div class="wizard">
+    <h5>Account</h5>
+    <section>
+        <legend>Account Information</legend>
+ 
+         <label for="zeit">Zeitaufwand:</label>
+					<p>
+						<input type="range" value="30" max="120" oninput="num.value = this.value" name="zeit">
+		</p>
+<p><output id="num">30 </output>
+					Min.
+					</p>
+		<p>Abwechslung: <input type="checkbox"></p>
+				<p >Nur diese Zutaten verwenden: <input type="checkbox"></p>
+				
+    </section>
+ 
+    <h5>Profile</h5>
+    <section>
+       <p >Zutaten: <input type="search"></p>
+				<p >Kategorie: <input type="checkbox"><input type="checkbox"><input type="checkbox"><input type="checkbox"><input type="checkbox"></p>
+				
+				
+    </section>
+ 
+        <h5>Finish</h5>
+    <section>
+        <legend>Profile hinzufügen</legend>
+ 		<p >Profile: <input type="search"></p>
+       
+    </section>
+		</div>
+</form>
+
+<%- include("partials/footer") %>
