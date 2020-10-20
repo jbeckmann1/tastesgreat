@@ -1,3 +1,119 @@
 <%- include("../partials/header") %>
+<script type="text/javascript">
+google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Makronährstoffe', 'Anteil (in Prozent)'],
+          ['Kohlenhydrate',  3.85],
+          ['Proteine',  1.66],
+          ['Fett', 0.316],
+        
+        ]);
+
+      var options = {
+        legend: 'none',
+        pieSliceText: 'label',
+        title: 'Makronährstoffe',
+        pieStartAngle: 0,
+      };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+        chart.draw(data, options);
+      }</script>
+<div class="flex-container">
+	 
+
+<form method="POST" action="/campgrounds">
+	<div class="row">
+		<div class="col-md-12">
+		<label>Rezepttitel:</label>
+		<input type="text" name="name" placeholder="Wie lautet der Rezepttitel?" />
+	</div>
+	
+	<div class="col-md-12">
+		<label>Dauer:</label>
+		<input type="text" name="dauer" placeholder="Wie lange dauert es in Minuten?" />
+	</div>
+	<div class="col-md-12">
+		<label>Kategorie:</label>
+		<div class="input-select">
+	<select name="kategorie">
+		<option selected="" value="Default">Select An Option</option>
+		<option value="frühstück">Frühstück</option>
+		<option value="mittag">Mittag</option>
+		<option value="abend">Abend</option>
+		<option value="snack">Snack</option>
+	
+	</select>
+</div>	
+	</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6">
+			
+		<label>Nährwerte:</label>
+			<input type="text" name="kcal" placeholder="kcal" />
+		<input type="text" name="kohlenhydrate" placeholder="Kohlenhydrate" />
+		<input type="text" name="proteine" placeholder="Proteine" />
+		<input type="text" name="fette" placeholder="Fett" />
+		<input type="text" name="ballaststoffe" placeholder="Ballaststoffe" />
+			
+		<div class="col-md-3 input-checkbox input-checkbox--switch">
+			Vegetarisch
+	<input id="checkbox-switch" type="checkbox" name="vegetarisch" />
+	<label for="checkbox-switch"></label>
+</div>
+
+	
+			<div class="col-md-3 input-checkbox input-checkbox--switch">
+			Vegan
+	<input id="checkbox-switch2" type="checkbox" name="vegan" />
+	<label for="checkbox-switch2"></label>
+</div>
+		<div class="col-md-3 input-checkbox input-checkbox--switch">
+			Koscher
+	<input id="checkbox-switch3" type="checkbox" name="koscher" />
+	<label for="checkbox-switch3"></label>
+</div>
+		<div class="col-md-2 input-checkbox input-checkbox--switch">
+			<span>Halal</span>
+	<input id="checkbox-switch4" type="checkbox" name="halal" />
+	<label for="checkbox-switch4"></label>
+</div>
+		
+			
+		</div>
+	
+		<div class="col-md-6" id="piechart" style="width: 500px; height: 400px;"></div>
+
+
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+		<label>Anleitung:</label>
+		<textarea rows="2" placeholder="Schritt 1" name="schritt_1"></textarea>
+		<textarea rows="2" placeholder="Schritt 2" name="schritt_2"></textarea>
+		<textarea rows="2" placeholder="Schritt 3" name="schritt_3"></textarea>
+		<textarea rows="2" placeholder="Schritt 4" name="schritt_4"></textarea>
+		<textarea rows="2" placeholder="Schritt 5" name="schritt_5"></textarea>
+		<textarea rows="2" placeholder="Schritt 6" name="schritt_6"></textarea>
+		<textarea rows="2" placeholder="Schritt 7" name="schritt_7"></textarea>
+	</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+		<label>Bild:</label>
+		<input type="text" name="image" placeholder="Image URL" />
+	</div>
+	</div><div class="col-md-12 text-center">
+	<button class="btn--lg display-center">
+		<span class="btn__text">Rezept teilen</span>
+	</button>
+	</div>
+	
+
+</form>
+</div>
 <%- include("../partials/footer") %>
    

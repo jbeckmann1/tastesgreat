@@ -6,7 +6,9 @@ var middleware =require("../middleware")
 //NEw show form to create new Campground
 router.get("/new", middleware.isLoggedIn, function(req, res){
 	res.render("campgrounds/new");
-})
+});
+
+
 //Index Show all campgrounds
 router.get("/", function(req, res){
 
@@ -36,22 +38,68 @@ router.get("/", function(req, res){
 		
 	
 });
-//create add a new Campground
+// router.post("/", middleware.isLoggedIn,  function(req, res){
+// 	var name = req.body.name;
+// 	var price = req.body.price;
+// 	var image = req.body.image;
+// 	var desc= req.body.description;
+// 	var author = {
+// 		id:req.user._id,
+// 		username: req.user.username
+// 	}
+// 	var newCampground = {name: name, image: image, description: desc, author:author}
+// 	Campground.create(newCampground, function(err, newlyCreated){
+// 					  if(err){
+// 						  console.log(newCampground);
+// 		console.log(err);
+// 	} else {
+// 		res.render("/campgrounds");
+// 		}
+//
+// 					  });
+// });
+// create add a new Campground
 router.post("/", middleware.isLoggedIn,  function(req, res){
 	var name = req.body.name;
-	var price = req.body.price;
+	var dauer = req.body.dauer;
 	var image = req.body.image;
-	var desc= req.body.description;
+	var desc= {
+		schritt_1: req.body.schritt_1,
+		schritt_2: req.body.schritt_2,
+		schritt_3: req.body.schritt_3,
+		schritt_4: req.body.schritt_4,
+		schritt_5: req.body.schritt_5,
+		schritt_6: req.body.schritt_6,
+		schritt_7: req.body.schritt_7,
+	}
+	var kategorie = req.body.kategorie;
+	var nährwerte= {
+		kcal: req.body.kcal,
+		kohlenhydrate: req.body.kohlenhydrate,
+		proteine: req.body.proteine,
+		fette: req.body.fette,
+		ballaststoffe: req.body.ballaststoffe,
+		}
+	var kennzeichen= {
+		koscher: Boolean(req.body.koscher),
+		halal: Boolean(req.body.halal),
+		vegetarisch: Boolean(req. body.vegetarisch),
+		vegan: Boolean(req.body.vegan)
+			};
+	
 	var author = {
 		id:req.user._id,
 		username: req.user.username
-	}
-	var newCampground = {name: name, image: image, description: desc, author:author}
+	};
+	var newCampground = {name: name, image: image, author:author, dauer:dauer, description:desc, kategorie:kategorie, nährwerte:nährwerte, kennzeichen:kennzeichen}
 	Campground.create(newCampground, function(err, newlyCreated){
 					  if(err){
+						 
 		console.log(err);
+						   console.log(newCampground)
 	} else {
 		res.redirect("/campgrounds");
+		console.log(newCampground)
 		}
 
 					  });

@@ -1,61 +1,117 @@
-<%- include("../partials/footer") %>
-<div class="main-container">
-            <section>
-                <div class="container">
-                    <div class="row">
-                        <div class="col">
-                            <div class="slider slider--ken-burns" data-arrows="true" data-paging="true">
-                                <ul class="slides">
-                                    <li> <img alt="Image" src="img/work-1.jpg"> </li>
-                                    <li> <img alt="Image" src="img/work-2.jpg"> </li>
-                                    <li> <img alt="Image" src="img/work-3.jpg"> </li>
-                                    <li> <img alt="Image" src="img/work-4.jpg"> </li>
-                                    <li> <img alt="Image" src="img/work-5.jpg"> </li>
-                                    <li> <img alt="Image" src="img/work-6.jpg"> </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <section>
+<%- include("../partials/header") %>
+
+              
+        
                 <div class="container">
                     <div class="row justify-content-center">
-                        <div class="col-md-10">
+                        <div class="col-md-12">
                             <div class="tabs-container tabs--vertical">
                                 <ul class="tabs">
                                     <li>
                                         <div class="tab__title"> <i class="icon icon--sm block icon-Text-Effect"></i> <span class="h5"><p>Zutaten</p></span> </div>
                                         <div class="tab__content">
-                                            <p class="lead"> Zutaten</p>
+                                            <div class="col-md-12">
+                            <div class="slider slider--ken-burns" data-arrows="true" data-paging="false">
+                                <ul class="slides">
+                                    <li> <img alt="Image" src="<%= campground.image %>"> </li>
+                                    
+                                </ul>
+                            </div>
+                        </div>
                                             <p class="lead"> </p>
                                         </div>
                                     </li>
                                     <li class="active">
                                         <div class="tab__title"> <i class="icon icon--sm block icon-Target-Market"></i> <span class="h5"><p>Anleitung</p></span> </div>
                                         <div class="tab__content">
-                                            <p class="lead"> Stack follows the BEM naming convention that focusses on logical code readability that is reflected in both the HTML and CSS. Interactive elements such as accordions and tabs follow the same markup patterns making rapid development easier for developers and beginners alike. </p>
-                                            <p class="lead"> Add to this the thoughtfully presented documentation, featuring code highlighting, snippets, class customizer explanation and you've got yourself one powerful value package. </p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="tab__title"> <i class="icon icon--sm block icon-Text-Effect"></i> <span class="h5"><p>Nährwerte</p></span> </div>
-                                        <div class="tab__content">
-                                            <p class="lead"> Stack offers a clean and contemporary look to suit a range of purposes from corporate, tech startup, marketing site to digital storefront. Elements have been designed to showcase content in a diverse yet consistent manner. </p>
-                                            <p class="lead"> Multiple font and colour scheme options mean that dramatically altering the look of your site is just clicks away — Customizing your site in the included Variant Page Builder makes experimenting with styles and content arrangements dead simple. </p>
+											<p class="lead">
+												<%=campground.description.schritt_1 %>
+											</p>
+											<p class="lead">
+												<%=campground.description.schritt_2 %>
+											</p>
+											<p class="lead">
+												<%=campground.description.schritt_3 %>
+											</p>
+											<p class="lead">
+												<%=campground.description.schritt_4 %>
+											</p>
+											<p class="lead">
+												<%=campground.description.schritt_5 %>
+											</p>
+											<p class="lead">
+												<%=campground.description.schritt_6 %>
+											</p>
+                                            <p class="lead">  </p>
                                         </div>
                                     </li>
                                     <li>
                                         <div class="tab__title"> <i class="icon icon--sm block icon-Love-User"></i> <span class="h5"><p>Kommentare</p></span> </div>
                                         <div class="tab__content">
-                                            <p class="lead"> Medium Rare is an elite author known for offering high-quality, high-value products backed by timely and personable support. Recognised and awarded by Envato on multiple occasions for producing consistently outstanding products, it's no wonder over 20,000 customers enjoy using Medium Rare templates. </p>
+                                            <a class="btn btn-success" href="/campgrounds/<%=campground._id%>/comments/new">Add new comment</a>
+											<hr>
+											 <% campground.comments.forEach(function(comment){ %>
+				<div class="row">
+					<div class="col-md-12">
+						<strong><%= comment.author.username %></strong>
+						<span class="float-right">10 days ago</span>
+						<p>
+							<%=comment.text%>
+						</p>
+						<% if(currentUser && campground.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin){ %>
+						<a class="btn btn-warning" href="/campgrounds/<%=campground._id%>/comments/<%=comment._id%>/edit">Edit</a>
+						<form class="delete-form" action="/campgrounds/<%=campground._id%>/comments/<%=comment._id%>?_method=DELETE" method="POST">
+						
+							<input type="submit" class="btn btn-danger" value="Delete">
+						</form>	<% } %>
+					</div>
+				</div>
+			
+			<% }); %> 
                                         </div>
                                     </li>
+								
                                 </ul>
+						
+<p class="card-text">
+						<em>Hochgeladen von <a href="/users/<%= campground.author.id %>"><%= campground.author.username %></a></em>
+					</p>
+					<% if(currentUser && campground.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin){ %>
+					<a class= "btn btn-warning" href="/campgrounds/<%= campground._id %>/edit">Edit</a>
+					<form class="delete-form" action="/campgrounds/<%= campground._id %>?_method=DELETE" method="POST">
+						<button class="btn btn-danger">Delete</button>
+						
+					</form>
+				<%	} %>
+            <section>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="feature"> <img alt="Image" src="img/cowork-6.jpg" class="border--round">
+                                <h4>Startups</h4>
+                                <p> Quickly launch a professional site — minimal effort, maximum impact. </p>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="feature"> <img alt="Image" src="img/cowork-6.jpg" class="border--round">
+                                <h4>Startups</h4>
+                                <p> Quickly launch a professional site — minimal effort, maximum impact. </p>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="feature"> <img alt="Image" src="img/cowork-1.jpg" class="border--round">
+                                <h4>Agencies</h4>
+                                <p> Deliver results to your clients faster than ever with rapid page building. </p>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="feature"> <img alt="Image" src="img/education-1.jpg" class="border--round">
+                                <h4>Freelancers</h4>
+                                <p> Stack is your silent partner, it does the heavy-lifting while you take the glory! </p>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
-        </div>
-<%- include("../partials/header") %>
+      
+<%- include("../partials/footer") %>

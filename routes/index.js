@@ -12,6 +12,10 @@ router.get("/ux", function(req, res){
     res.render("users/show");
 	
 });
+router.get("/search", function(req, res){
+
+    res.render("search");
+});
 //show register form
 router.get("/register", function(req, res){
     res.render("register");
@@ -55,7 +59,7 @@ router.post("/login", passport.authenticate("local",
 router.get("/logout", function(req, res){
 	req.logout();
 	req.flash("success", "Logged you out");
-	res.redirect("/campgrounds");
+	res.redirect("next");
 });
 
 router.get("/users/:id", function(req, res) {

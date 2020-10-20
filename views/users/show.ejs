@@ -1,28 +1,130 @@
 <%- include("../partials/header") %>
 <div class="main-container">
-                       <section>
+               
+
+       
                 <div class="container">
                     <div class="row justify-content-center">
-                        <div class="col-md-10">
+		
+						
+						
+                        <div class="col-md-12">
                             <div class="tabs-container tabs--vertical">
                                 <ul class="tabs">
                                     <li class="active">
                                         <div class="tab__title"> <i class="icon icon--sm block icon-Target-Market"></i> <span class="h5"><p>Übersicht</p></span> </div>
                                         <div class="tab__content">
-                                           		 <div class = "slider" data-arrows = "true" data-paging = "true">
-	<ul class = "slide">
-		<li class = "col-md-6"> <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"> </ li>
-		<li class = "col-md-6"> <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"> </ li>
-		<li class = "col-md-6"> <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"> </ li>
-	</ ul>
-</ div>
-                                            <p class="lead">Meine Lieblingsrezepte<br>Rezepthistorie<br>Rezeptempfehlungen von Freunden<br><br></p>
-                                        </div>
-                                    </li>
-                                    <li>
+                                            <div class="container">
+                    <div class="row justify-content-center">
+						<div class="col-md-12">
+	<div class="masonry">
+                        <div class="masonry__container row masonry--active">
+                            <div class="col-md-6 masonry__item">
+                              
+									<div class="wrapper">
+  <div class="card"><img src="https://images.unsplash.com/photo-1472905981516-5ac09f35b7f4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=60"/>
+    <div class="info">
+    
+      <p>Merkliste</p>
+      <button>Read More</button>
+    </div>
+  </div>
+								</div></div><div class="col-md-6 masonry__item">
+                              
+									<div class="wrapper">
+  <div class="card"><img src="https://images.unsplash.com/photo-1581525975525-4f85aa4d0bc0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=60"/>
+    <div class="info">
+      
+      <p>Lieblingsrezepte</p>
+      <button>Read More</button>
+    </div>
+  </div>
+								</div></div><div class="col-md-6 masonry__item">
+                              
+									<div class="wrapper">
+  <div class="card"><img src="https://images.unsplash.com/photo-1473163928189-364b2c4e1135?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=60"/>
+    <div class="info">
+     
+      <p>Rezepthistorie</p>
+      <button>Read More</button>
+    </div>
+  </div>
+								</div></div><div class="col-md-6 masonry__item">
+                              
+									<div class="wrapper">
+  <div class="card"><img src="https://images.unsplash.com/photo-1556911261-6bd341186b2f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=60"/>
+    <div class="info">
+  
+      <p>Rezeptempfehlungen</p>
+      <button>Read More</button>
+    </div>
+  </div>
+								</div></div>
+										</div>
+		
+										</div></li>
+                                       
+                                                                   <li>
                                         <div class="tab__title"> <i class="icon icon--sm block icon-Love-User"></i> <span class="h5"><p>Mein Profil</p></span> </div>
                                         <div class="tab__content">
-                                            <p class="lead">Nickname<br>Voller Name<br>Avatar<br>Passwort<br>Neues Passwort vergeben<br>Profilbeschreibung<br>jeweils dies editieren können</p>
+                                            <div class="boxed boxed--lg boxed--border">
+                                <div id="account-profile" class="account-tab">
+                                    <h4>Profile</h4>
+                                    <form>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Real Name:</label>
+                                                <input type="text" name="name" value="Lucas Banks">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>Display Name:</label>
+                                                <input type="text" name="display-name" value="l_banks">
+                                            </div>
+                                            <div class="col-md-12">
+                                                <label>Email Address:</label>
+                                                <input type="email" name="email" value="l_banks@stack.net">
+                                            </div>
+                                            <div class="col-md-12">
+                                                <label>Location:</label>
+                                                <input type="text" name="location" value="Melbourne">
+                                            </div>
+                                            <div class="col-md-12">
+                                                <label>Website:</label>
+                                                <input type="text" name="website" value="http://mrare.co">
+                                            </div>
+                                            <div class="col-md-12">
+                                                <label>Bio:</label>
+                                                <textarea rows="4" name="bio"></textarea>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="input-checkbox input-checkbox--switch">
+                                                    <input type="checkbox" name="public-profile" id="input-assigned-0">
+                                                    <label for="input-assigned-0"></label>
+                                                </div>
+                                                <span>Allow my profile to be viewable by guests</span>
+                                            </div><div id="account-password" class="account-tab">
+                                    <h4>Password</h4>
+                                    <p>Passwords must be at least 6 characters in length.</p>
+                                    <form>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <label>Old Password:</label>
+                                                <input type="password" name="old-password">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>New Password:</label>
+                                                <input type="password" name="new-password">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>Retype New Password:</label>
+                                                <input type="password" name="new-password-confirm">
+                                            </div>
+                                            <div class="col-lg-3 col-md-4">
+                                                <button type="submit" class="btn btn--primary type--uppercase">Save Password</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
                                         </div>
                                     </li>
                                     <li>
@@ -45,6 +147,7 @@
                                             <p class="lead"> </p>
                                         </div>
                                     </li>
+                                 
                                     <li>
                                         <div class="tab__title"> <i class="icon icon--sm block icon-Text-Effect"></i> <span class="h5"><p>Admin</p> </span> </div>
                                         <div class="tab__content">
@@ -57,20 +160,6 @@
                         </div>
                     </div>
                 </div>
-				 <div class = "slider" data-arrows = "true" data-paging = "true">
-	<ul class = "slide">
-		<li class = "col-md-6"> <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"> </ li>
-		<li class = "col-md-6"> <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"> </ li>
-		<li class = "col-md-6"> <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"> </ li>
-	</ ul>
-</ div>
-            </section>
-        </div>
- <div class = "slider" data-arrows = "true" data-paging = "true">
-	<ul class = "slide">
-		<li class = "col-md-6"> <img href="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"> </ li>
-		<li class = "col-md-6"> <img href="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"> </ li>
-		<li class = "col-md-6"> <img href="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"> </ li>
-	</ ul>
-</ div>
+			
+          
 <%- include("../partials/footer") %>
