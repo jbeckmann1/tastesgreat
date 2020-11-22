@@ -1,165 +1,241 @@
 <%- include("../partials/header") %>
 <div class="main-container">
-               
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-md-12">
+				<div class="tabs-container tabs--vertical">
+					<ul class="tabs">
+						<li class="active">
+							<div class="tab__title">
+								<i class="icon icon--sm block icon-Love-User"></i>
+								<span class="h5"><p>Mein Profil</p></span>
+							</div>
+							<div class="tab__content">
+								<div class="boxed boxed--lg boxed--border">
+									<div id="account-profile" class="account-tab">
+										<h4>Profile</h4>
+										<form>
+											<div class="row">
+												<div class="col-md-6">
+													<label>Vorname:</label>
+													<input
+														type="text"
+														name="name"
+														value="<%=user.firstName%>"
+													/>
+												</div>
+												<div class="col-md-6">
+													<label>Nachname:</label>
+													<input
+														type="text"
+														name="display-name"
+														value="<%=user.lastName%>"
+													/>
+												</div>
+												<div class="col-md-12">
+													<label>Username:</label>
+													<input
+														type="text"
+														name="username"
+														value="<%= user.username%>"
+													/>
+												</div>
 
-       
-                <div class="container">
-                    <div class="row justify-content-center">
+												<div class="col-md-12">
+													<label>Bio:</label>
+													<textarea
+														rows="4"
+														name="bio"
+														value="<%=user.bio%>"
+													></textarea>
+												</div>
+												<div class="col-md-12">
+													<div
+														class="input-checkbox input-checkbox--switch"
+													>
+														<input
+															type="checkbox"
+															name="public-profile"
+															id="input-assigned-0"
+														/>
+														<label for="input-assigned-0"></label>
+													</div>
+													<span
+														>Erlaube Besuchern dein Profil zu
+														sehen</span
+													>
+												</div>
+												<div
+													id="account-password"
+													class="account-tab"
+												></div>
+												<div class="col-lg-3 col-md-4">
+													<button
+														type="submit"
+														class="btn btn--primary type--uppercase"
+													>
+														Speichern
+													</button>
+												</div>
+											</div>
+										</form>
+										<hr />
+										<h4>Passwort</h4>
+
+										<form>
+											<div class="row">
+												<div class="col-12">
+													<label>Altes Passwort:</label>
+													<input type="password" name="old-password" />
+												</div>
+												<div class="col-md-6">
+													<label>Neues Passwort:</label>
+													<input type="password" name="new-password" />
+												</div>
+												<div class="col-md-6">
+													<label>Wiederholung:</label>
+													<input
+														type="password"
+														name="new-password-confirm"
+													/>
+												</div>
+												<div class="col-lg-3 col-md-4">
+													<button
+														type="submit"
+														class="btn btn--primary type--uppercase"
+													>
+														Passwort sichern
+													</button>
+												</div>
+											</div>
+										</form>
+									</div>
+									</div>
+								</div>
+								</li>
+								<li>
+									<div class="tab__title">
+										<i class="icon icon--sm block icon-Target-Market"></i>
+										<span class="h5"><p>Merkliste</p></span>
+									</div>
+									<div class="tab__content">
+										<div class="container">
+											<div class="row justify-content-center">
+												<div class="row">
+	<div class="col-md-12">
+
+
+
+    	<div class="masonry">          
+			<div class="masonry__container row masonry--active">
+				
+				<% campgrounds.forEach(function(campground){ %>
 		
-						
-						
-                        <div class="col-md-12">
-                            <div class="tabs-container tabs--vertical">
-                                <ul class="tabs">
-                                    <li class="active">
-                                        <div class="tab__title"> <i class="icon icon--sm block icon-Target-Market"></i> <span class="h5"><p>Übersicht</p></span> </div>
-                                        <div class="tab__content">
-                                            <div class="container">
-                    <div class="row justify-content-center">
-						<div class="col-md-12">
-	<div class="masonry">
-                        <div class="masonry__container row masonry--active">
-                            <div class="col-md-6 masonry__item">
-                              
-									<div class="wrapper">
-  <div class="card"><img src="https://images.unsplash.com/photo-1472905981516-5ac09f35b7f4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=60"/>
-    <div class="info">
-    
-      <p>Merkliste</p>
-      <button>Read More</button>
-    </div>
-  </div>
-								</div></div><div class="col-md-6 masonry__item">
-                              
-									<div class="wrapper">
-  <div class="card"><img src="https://images.unsplash.com/photo-1581525975525-4f85aa4d0bc0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=60"/>
-    <div class="info">
-      
-      <p>Lieblingsrezepte</p>
-      <button>Read More</button>
-    </div>
-  </div>
-								</div></div><div class="col-md-6 masonry__item">
-                              
-									<div class="wrapper">
-  <div class="card"><img src="https://images.unsplash.com/photo-1473163928189-364b2c4e1135?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=60"/>
-    <div class="info">
-     
-      <p>Rezepthistorie</p>
-      <button>Read More</button>
-    </div>
-  </div>
-								</div></div><div class="col-md-6 masonry__item">
-                              
-									<div class="wrapper">
-  <div class="card"><img src="https://images.unsplash.com/photo-1556911261-6bd341186b2f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=60"/>
-    <div class="info">
-  
-      <p>Rezeptempfehlungen</p>
-      <button>Read More</button>
-    </div>
-  </div>
-								</div></div>
-										</div>
-		
-										</div></li>
-                                       
-                                                                   <li>
-                                        <div class="tab__title"> <i class="icon icon--sm block icon-Love-User"></i> <span class="h5"><p>Mein Profil</p></span> </div>
-                                        <div class="tab__content">
-                                            <div class="boxed boxed--lg boxed--border">
-                                <div id="account-profile" class="account-tab">
-                                    <h4>Profile</h4>
-                                    <form>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Real Name:</label>
-                                                <input type="text" name="name" value="Lucas Banks">
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label>Display Name:</label>
-                                                <input type="text" name="display-name" value="l_banks">
-                                            </div>
-                                            <div class="col-md-12">
-                                                <label>Email Address:</label>
-                                                <input type="email" name="email" value="l_banks@stack.net">
-                                            </div>
-                                            <div class="col-md-12">
-                                                <label>Location:</label>
-                                                <input type="text" name="location" value="Melbourne">
-                                            </div>
-                                            <div class="col-md-12">
-                                                <label>Website:</label>
-                                                <input type="text" name="website" value="http://mrare.co">
-                                            </div>
-                                            <div class="col-md-12">
-                                                <label>Bio:</label>
-                                                <textarea rows="4" name="bio"></textarea>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <div class="input-checkbox input-checkbox--switch">
-                                                    <input type="checkbox" name="public-profile" id="input-assigned-0">
-                                                    <label for="input-assigned-0"></label>
-                                                </div>
-                                                <span>Allow my profile to be viewable by guests</span>
-                                            </div><div id="account-password" class="account-tab">
-                                    <h4>Password</h4>
-                                    <p>Passwords must be at least 6 characters in length.</p>
-                                    <form>
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <label>Old Password:</label>
-                                                <input type="password" name="old-password">
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label>New Password:</label>
-                                                <input type="password" name="new-password">
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label>Retype New Password:</label>
-                                                <input type="password" name="new-password-confirm">
-                                            </div>
-                                            <div class="col-lg-3 col-md-4">
-                                                <button type="submit" class="btn btn--primary type--uppercase">Save Password</button>
-                                            </div>
+             <div class="masonry__item col-md-3 col-12 filter-digital" data-masonry-filter="Digital">
+                                <div class="project-thumb hover-element border--round">
+                                    <a href="/campgrounds/<%= campground._id %>">
+                                        <div class="hover-element__initial">
+                                            <div class="background-image-holder"> <img alt="background" src="<%= campground.image %>"> </div>
                                         </div>
-                                    </form>
+                                        <div class="hover-element__reveal" data-scrim-top="5">
+                                            <div class="project-thumb__title">
+                                                <h4><%= campground.name %></h4> <span><%= campground.dauer%></span> </div>
+                                        </div>
+                                    </a>
                                 </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="tab__title"> <i class="icon icon--sm block icon-Text-Effect"></i> <span class="h5"><p>Präferenzen</p></span> </div>
-                                        <div class="tab__content">
-                                            <p class="lead">Allergene(Zutatenliste)(Autocomplete)<br>Checkbox für Vegetarisch, Vegan, und dabei als Unterhierarchie die(Mit Kategorien arbeiten) Zutaten auf Verbotsliste setzen(Dabei Zutaten erfassen)<br></p>
-                                            <p class="lead"> </p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="tab__title"> <i class="icon icon--sm block icon-Love-User"></i> <span class="h5"><p>Meine Rezepte</p></span> </div>
-                                        <div class="tab__content">
-                                            <p class="lead"> Medium Rare is an elite author known for offering high-quality, high-value products backed by timely and personable support. Recognised and awarded by Envato on multiple occasions for producing consistently outstanding products, it's no wonder over 20,000 customers enjoy using Medium Rare templates. </p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="tab__title"> <i class="icon icon--sm block icon-Text-Effect"></i> <span class="h5"><p>Freunde</p> </span> </div>
-                                        <div class="tab__content">
-                                            <p class="lead">Profilverlinkung, Anzahl Rezepte, Name, entfolgen</p>
-                                            <p class="lead"> </p>
-                                        </div>
-                                    </li>
-                                 
-                                    <li>
-                                        <div class="tab__title"> <i class="icon icon--sm block icon-Text-Effect"></i> <span class="h5"><p>Admin</p> </span> </div>
-                                        <div class="tab__content">
-                                            <p class="lead">Neuen Admin hinzufügen</p>
-                                            <p class="lead">Gemeldete Beiträge<br>User Suchen und bearbeiten</p>
-                                        </div>
-                                    </li>
-                                </ul>
                             </div>
-                        </div>
-                    </div>
-                </div>
-			
-          
-<%- include("../partials/footer") %>
+							<% }); %>
+                          
+			</div>
+    	</div>
+	</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+									
+										
+								</li>
+						<li>
+							<div class="tab__title">
+								<i class="icon icon--sm block icon-Love-User"></i>
+								<span class="h5"><p>Meine Rezepte</p></span>
+							</div>
+							<div class="tab__content">
+								<div class="row">
+	<div class="col-md-12">
+
+
+
+    	<div class="masonry">          
+			<div class="masonry__container row masonry--active">
+				
+				<% campgrounds.forEach(function(campground){ %>
+		
+             <div class="masonry__item col-md-4 col-12 filter-digital" data-masonry-filter="Digital">
+                                <div class="project-thumb hover-element border--round">
+                                    <a href="/campgrounds/<%= campground._id %>">
+                                        <div class="hover-element__initial">
+                                            <div class="background-image-holder"> <img alt="background" src="<%= campground.image %>"> </div>
+                                        </div>
+                                        <div class="hover-element__reveal" data-scrim-top="5">
+                                            <div class="project-thumb__title">
+                                                <h4><%= campground.name %></h4> <span><%= campground.dauer%></span> </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+							<% }); %>
+							</div>
+		</div></div></div></div>
+						</li>
+							
+						<li>
+							<div class="tab__title">
+								<i class="icon icon--sm block icon-Text-Effect"></i>
+								<span class="h5"><p>Präferenzen</p></span>
+							</div>
+							<div class="tab__content">
+								<p class="lead">
+									Allergene(Zutatenliste)(Autocomplete)<br />Checkbox für
+									Vegetarisch, Vegan, und dabei als Unterhierarchie die(Mit
+									Kategorien arbeiten) Zutaten auf Verbotsliste setzen(Dabei
+									Zutaten erfassen)<br />
+								</p>
+								<p class="lead"></p>
+							</div>
+						</li>
+						
+						<li>
+							<div class="tab__title">
+								<i class="icon icon--sm block icon-Text-Effect"></i>
+								<span class="h5"><p>Freunde</p> </span>
+							</div>
+							<div class="tab__content">
+								<p class="lead">
+									Profilverlinkung, Anzahl Rezepte, Name, entfolgen
+								</p>
+								<p class="lead"></p>
+							</div>
+						</li>
+
+						<li>
+							<div class="tab__title">
+								<i class="icon icon--sm block icon-Text-Effect"></i>
+								<span class="h5"><p>Admin</p> </span>
+							</div>
+							<div class="tab__content">
+								<p class="lead">Neuen Admin hinzufügen</p>
+								<p class="lead">
+									Gemeldete Beiträge<br />User Suchen und bearbeiten
+								</p>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<%- include("../partials/footer") %>
+</div>

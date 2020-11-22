@@ -1,5 +1,5 @@
 <%- include("../partials/header") %>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 google.charts.load("current", {packages:["corechart"]});
       google.charts.setOnLoadCallback(drawChart);
       function drawChart() {
@@ -20,8 +20,8 @@ google.charts.load("current", {packages:["corechart"]});
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
         chart.draw(data, options);
-      }</script>
-<div class="flex-container">
+      }</script> -->
+<div class="container flex-container">
 	 
 
 <form method="POST" action="/campgrounds">
@@ -29,14 +29,12 @@ google.charts.load("current", {packages:["corechart"]});
 		<div class="col-md-12">
 		<label>Rezepttitel:</label>
 		<input type="text" name="name" placeholder="Wie lautet der Rezepttitel?" />
-	</div>
-	
-	<div class="col-md-12">
-		<label>Dauer:</label>
-		<input type="text" name="dauer" placeholder="Wie lange dauert es in Minuten?" />
-	</div>
-	<div class="col-md-12">
-		<label>Kategorie:</label>
+		</div>
+
+		<label>Kurzbeschreibung:</label>
+		<input type="text" name="shortdescription" placeholder="Eine kurze Beschreibung des Rezepts" />
+			
+				<label>Kategorie:</label>
 		<div class="input-select">
 	<select name="kategorie">
 		<option selected="" value="Default">Select An Option</option>
@@ -47,14 +45,35 @@ google.charts.load("current", {packages:["corechart"]});
 	
 	</select>
 </div>	
+	
+	
+	<div class="col-md-12">
+		<label>Dauer:</label>
+		<input type="text" name="dauer" placeholder="Wie lange dauert es in Minuten?" />
+		<input type="text" name="aktivearbeitszeit" placeholder="Aktive Arbeitszeit" />
 	</div>
-	</div>
+
+	
 	<div class="row">
 		<div class="col-md-6">
 			
-		<label>Nährwerte:</label>
-			<input type="text" name="kcal" placeholder="kcal" />
-		<input type="text" name="kohlenhydrate" placeholder="Kohlenhydrate" />
+		</div>
+			
+			<div class="col-md-12">
+		
+		<div class="input-select">
+	<select name="schwierigkeit">
+		<option selected="" value="Default">Wähle die Schwierigkeit</option>
+		<option value="Leicht">Leicht</option>
+		<option value="Mittel">Mittel</option>
+		<option value="Schwer">Schwer</option>
+		
+	
+	</select>
+</div>	
+
+	</div>
+		
 		<input type="text" name="proteine" placeholder="Proteine" />
 		<input type="text" name="fette" placeholder="Fett" />
 		<input type="text" name="ballaststoffe" placeholder="Ballaststoffe" />
@@ -71,24 +90,16 @@ google.charts.load("current", {packages:["corechart"]});
 	<input id="checkbox-switch2" type="checkbox" name="vegan" />
 	<label for="checkbox-switch2"></label>
 </div>
-		<div class="col-md-3 input-checkbox input-checkbox--switch">
-			Koscher
-	<input id="checkbox-switch3" type="checkbox" name="koscher" />
-	<label for="checkbox-switch3"></label>
-</div>
-		<div class="col-md-2 input-checkbox input-checkbox--switch">
-			<span>Halal</span>
-	<input id="checkbox-switch4" type="checkbox" name="halal" />
-	<label for="checkbox-switch4"></label>
+	>
 </div>
 		
 			
 		</div>
 	
-		<div class="col-md-6" id="piechart" style="width: 500px; height: 400px;"></div>
+		
 
 
-	</div>
+
 	<div class="row">
 		<div class="col-md-12">
 		<label>Anleitung:</label>

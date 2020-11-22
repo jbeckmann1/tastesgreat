@@ -8,10 +8,7 @@ var middleware =require("../middleware")
 router.get("/", function(req, res){
     res.render("landing");
 });
-router.get("/ux", function(req, res){
-    res.render("users/show");
-	
-});
+
 router.get("/search", function(req, res){
 
     res.render("search");
@@ -59,10 +56,10 @@ router.post("/login", passport.authenticate("local",
 router.get("/logout", function(req, res){
 	req.logout();
 	req.flash("success", "Logged you out");
-	res.redirect("next");
+	res.redirect("/");
 });
 
-router.get("/users/:id", function(req, res) {
+router.get("/users/:id", middleware.checkProfileOwnership, function(req, res) {
   User.findById(req.params.id, function(err, foundUser) {
     if(err) {
       req.flash("error", "Something went wrong.");
@@ -77,7 +74,26 @@ router.get("/users/:id", function(req, res) {
     })
   });
 });
-router.get("/feed", function(req, res){
+
+router.get("/profile/:id",  function(req, res) {
+	console.log
+  User.findById(req.user._id, function(err, foundUser) {
+    if(err) {
+		console.log(req);
+      req.flash("error", "Something went wrong.");
+      return res.redirect("/");
+    }
+    Campground.find().where('author.id').equals(foundUser._id).exec(function(err, campgrounds) {
+      if(err) {
+        req.flash("error", "Something went wrong.");
+        return res.redirect("/");
+      }
+      res.render("users/private", {user: foundUser, campgrounds: campgrounds});
+    })
+  });
+});
+
+router.get("/feed/:id", function(req, res){
     res.render("feed");
 	});
 

@@ -2,20 +2,28 @@ var express = require("express");
 var router =express.Router();
 var Campground =require("../models/campground");
 var middleware =require("../middleware")
+const Zutat = require("../models/zutat");
+const Zutaten = [];
+
 
 //NEw show form to create new Campground
-router.get("/new", middleware.isLoggedIn, function(req, res){
-	res.render("campgrounds/new");
+router.get("/new", middleware.isLoggedIn, (req, res) => {
+	
+// Zutat.find({}, (err, zutaten) => {
+res.render("campgrounds/neu", {Zutaten: Zutaten});
+
 });
+
 
 
 //Index Show all campgrounds
 router.get("/", function(req, res){
+	
 
     if(req.query.search) {
         const regex = new RegExp(escapeRegex(req.query.search), 'gi');
         // Get all campgrounds from DB
-        Campground.find({name: regex}, function(err, allCampgrounds){
+        Campground.find({title: regex}, function(err, allCampgrounds){
            if(err){
                console.log(err);
            } else {
@@ -24,11 +32,12 @@ router.get("/", function(req, res){
 				  return res.redirect("back");
 						
               }
+			  
               res.render("campgrounds/index",{campgrounds:allCampgrounds});
            }
         });
     } else {	
-	Campground.find({}, function(err, allCampgrounds){
+	Campground.find({isOnline: true, "author.id": req.user._id} , function(err, allCampgrounds){
 				  if(err){
 		console.log(err);}else {
 					res.render("campgrounds/index", {campgrounds:allCampgrounds});
@@ -59,51 +68,7 @@ router.get("/", function(req, res){
 // 					  });
 // });
 // create add a new Campground
-router.post("/", middleware.isLoggedIn,  function(req, res){
-	var name = req.body.name;
-	var dauer = req.body.dauer;
-	var image = req.body.image;
-	var desc= {
-		schritt_1: req.body.schritt_1,
-		schritt_2: req.body.schritt_2,
-		schritt_3: req.body.schritt_3,
-		schritt_4: req.body.schritt_4,
-		schritt_5: req.body.schritt_5,
-		schritt_6: req.body.schritt_6,
-		schritt_7: req.body.schritt_7,
-	}
-	var kategorie = req.body.kategorie;
-	var nährwerte= {
-		kcal: req.body.kcal,
-		kohlenhydrate: req.body.kohlenhydrate,
-		proteine: req.body.proteine,
-		fette: req.body.fette,
-		ballaststoffe: req.body.ballaststoffe,
-		}
-	var kennzeichen= {
-		koscher: Boolean(req.body.koscher),
-		halal: Boolean(req.body.halal),
-		vegetarisch: Boolean(req. body.vegetarisch),
-		vegan: Boolean(req.body.vegan)
-			};
-	
-	var author = {
-		id:req.user._id,
-		username: req.user.username
-	};
-	var newCampground = {name: name, image: image, author:author, dauer:dauer, description:desc, kategorie:kategorie, nährwerte:nährwerte, kennzeichen:kennzeichen}
-	Campground.create(newCampground, function(err, newlyCreated){
-					  if(err){
-						 
-		console.log(err);
-						   console.log(newCampground)
-	} else {
-		res.redirect("/campgrounds");
-		console.log(newCampground)
-		}
 
-					  });
-});
 //Show Route shows more info about campgrounds
 router.get("/:id", function(req, res){
 	Campground.findById(req.params.id).populate("comments").exec(function(err, foundCampground){
@@ -111,7 +76,7 @@ router.get("/:id", function(req, res){
 			console.log(err);
 			} else {
 				//console.log(foundCampground);
-				res.render("campgrounds/show", {campground: foundCampground});
+				res.render("campgrounds/show2", {campground: foundCampground});
 			}
 	});
 	});
@@ -155,7 +120,66 @@ router.delete("/:id", middleware.checkCampgroundOwnership, function(req, res){
 		}
 	});
 });
+//POST METHOD Zutat
 
+//POST METHOD
+
+
+// function newElement() {
+// 	var zutat = document.createElement('li'); 
+// 	zutat.innerText = document.getElementById("menge").value +" "+ document.getElementById("einheit").value + " "+ document.getElementById("name").value; 
+// 	document.getElementById("zutaten").appendChild(zutat)
+// 	const newzutat = {
+// 		name: document.querySelector('#name').value,
+// 		menge: document.querySelector('#menge').value,
+// 		einheit: document.querySelector('#einheit').value
+// 	}
+// 	Zutaten.push(newzutat)
+// }
+
+
+router.post("/",middleware.isLoggedIn, function(req, res,){
+		
+	let zutaten =[];
+	var title = req.body.title;
+	var shortdescription =req.body.shortdescription
+	for (let i= 0; i<req.body.name.length; i++){
+		let zutat = {	
+					name: req.body.name[i],
+				 	menge: req.body.menge[i],
+					einheit: req.body.einheit[i]
+	}
+		zutaten.push(zutat)
+		};
+	var image = req.body.image;
+	var dauer = req.body.dauer
+	var schritte= req.body.schritte
+	var kategorie = req.body.kategorie;
+	var schwierigkeit = req.body.schwierigkeit;
+	var aktivearbeitszeit =req.body.aktivearbeitszeit
+	var kennzeichen= {
+		
+		vegetarisch: Boolean(req. body.vegetarisch),
+		vegan: Boolean(req.body.vegan)
+			};
+	var isOnline = Boolean(req.body.isOnline)
+	var author = {
+		id:req.user._id,
+		username: req.user.username
+	};
+	var newCampground = {title: title, zutaten:zutaten, image: image, author:author, dauer:dauer, schritte:schritte, kategorie:kategorie, kennzeichen:kennzeichen, shortdescription:shortdescription, schwierigkeit: schwierigkeit, aktivearbeitszeit: aktivearbeitszeit, isOnline:isOnline}
+	Campground.create(newCampground, function(err, newlyCreated){
+					  if(err){
+						 
+		console.log(err);
+						   console.log(newCampground)
+	} else {
+		res.redirect("/campgrounds");
+		console.log(newCampground)
+		}
+
+					  });
+});
 
 //middleware
 

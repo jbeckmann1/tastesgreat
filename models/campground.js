@@ -4,27 +4,25 @@ var mongoose = require("mongoose")
 
 
 var campgroundSchema = new mongoose.Schema({
-	name: String, 
-	zutaten: {
-		id:{
-			type:mongoose.Schema.Types.ObjectId,
-			ref: "Zutat"
-		},
+	title: String, 
+	zutaten: [{
 		name: String,
 		einheit: String,
 		menge: String,
-		kategorie: String,		
-	},
+		
+	}],
+	isOnline:Boolean,
+	Sharedwith:[{id:{
+				type:mongoose.Schema.Types.ObjectId,
+				ref: "User"
+		},
+		username: String}],
 	image: String,
-	description: {
-		schritt_1: String,
-		schritt_2: String,
-		schritt_3: String,
-		schritt_4: String,
-		schritt_5: String,
-		schritt_6: String,
-	},
+	schritte: Array,
 	dauer: String,
+	aktivearbeitszeit: String,
+	schwierigkeit: String,
+	shortdescription: String,
 	kategorie: String,
 	nährwerte: {
 		kcal: String,

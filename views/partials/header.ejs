@@ -30,11 +30,11 @@
         <div class="nav-container">
             <div class="via-1602680609265" via="via-1602680609265" vio="MyNav">
                 <nav class="bar bar-toggle">
-                    <div class="container">
+                   
                         <div class="row align-items-center">
                             <div class="col-6">
                                 <div class="bar__module">
-									<a href="/"> <h3> <i class="fab fa-envira" id="navicon"></i> | TastesGreat</h3></a>
+									<a href="/campgrounds"> <h3> <i class="fab fa-envira" id="navicon"></i> | TastesGreat</h3></a>
                                 </div>
                             </div>
                             <div class="col-6 ">
@@ -64,9 +64,9 @@
 							 <li class="h4"> <a href="/register">SignUp<br></a> </li>
                             <li class="h4"> <a href="/login">LogIn<br></a> </li>
 							  <% } else { %>
-							<li class="h4"> <a href="/feed">Feed<br></a> </li>
+							
 							<li class="h4"> <a href="/campgrounds/new">Neues Rezept<br></a> </li>
-                            <li class="h4"> <a href="/users/:id">Profil<br></a> </li>
+                            <li class="h4"> <a href="/users/<%=currentUser._id%>">Profil<br></a> </li>
                             <li class="h4"> <a href="/logout">Logout<br></a> </li>
 							  <% } %>
                         </ul>
@@ -79,15 +79,14 @@
                             <li><a href="#"><i class="socicon socicon-instagram icon icon--xs"></i></a></li>
                         </ul>
                     </div>
-                </div>
+                
             </div>
        
 		<div>
 			
 		</div>
-	<div class="main-container">
-		<section>
-		<div class="container">
+	
+                    
 		<%if(error && error.length > 0){ %>
 		<div class="alert alert-danger" role="alert">
   <%= error %>

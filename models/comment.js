@@ -9,6 +9,10 @@ var commentSchema = mongoose.Schema({
 		},
 		username: String
 	},
+	date: {
+		type: Date,
+		default: Date.now
+}
 });
 
 module.exports = mongoose.model("Comment", commentSchema)

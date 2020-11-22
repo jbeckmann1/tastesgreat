@@ -1,18 +1,20 @@
 <%- include("partials/header") %>       
            <section class="height-100 imagebg text-center" data-overlay="4">
-                <div class="background-image-holder"><img alt="background" src="img/inner-6.jpg"></div>
+                <div class="background-image-holder"><img alt="background" src="https://images.unsplash.com/photo-1546548970-71785318a17b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80"></div>
                 <div class="container pos-vertical-center">
                     <div class="row">
                         <div class="col-md-7 col-lg-5">
-                            <h2>Login to continue</h2>
-                            <p class="lead"> Welcome back, sign in with your existing Stack account credentials </p>
+                            <h2>Willkommen zurück</h2>
+                            <p class="lead"> Logge dich ein um auf alle Funktionen und deine Einstellungen nutzen. </p>
                             <form action="/login" method="POST">
                                 <div class="row">
                                     <div class="col-md-12"> <input type="text" placeholder="Username" name="username"> </div>
                                     <div class="col-md-12"> <input type="password" placeholder="Password" name="password"> </div>
                                     <div class="col-md-12"> <button class="btn btn--primary type--uppercase" type="submit">Login</button> </div>
                                 </div>
-                            </form> <span class="type--fine-print block">Dont have an account yet? <a href="/register">Create account</a></span> <span class="type--fine-print block">Forgot your username or password? <a href="page-accounts-recover.html">Recover account</a></span> </div>
+                            </form> <span class="type--fine-print block">Du hast noch keinen Account? <a href="/register">Jetzt registrieren</a></span> 
+							<!-- <span class="type--fine-print block">Forgot your username or password? <a href="page-accounts-recover.html">Recover account</a></span> -->
+						</div>
                     </div>
                 </div>
             </section>
