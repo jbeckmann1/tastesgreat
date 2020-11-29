@@ -59,7 +59,27 @@ router.get("/logout", function(req, res){
 	res.redirect("/");
 });
 
-router.get("/users/:id", middleware.checkProfileOwnership, function(req, res) {
+router.get("/users/rezepte/:id", middleware.isLoggedIn, function(req, res){
+Campground.find({"author.id": req.user._id} , function(err, allCampgrounds){
+	res.render("users/meinerezepte", {campgrounds:allCampgrounds})
+	
+});
+});
+
+// Update Profil
+router.put("/users/:id", middleware.checkProfileOwnership, function(req, res){
+	//find and update the correct campgrounds
+	User.findByIdAndUpdate(req.params.id, req.body.user, function(err, updatedProfil){
+		if(err){
+			res.redirect("/campgrounds")
+		} else {
+			res.redirect("/users/" + req.params.id)
+		}
+	})
+})
+
+
+router.get("/users/:id", middleware.checkProfileOwnership, middleware.isLoggedIn, function(req, res) {
   User.findById(req.params.id, function(err, foundUser) {
     if(err) {
       req.flash("error", "Something went wrong.");

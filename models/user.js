@@ -7,6 +7,7 @@ var UserSchema =new mongoose.Schema({
 		ref: "User"
 		},
 	username: String,
+	email: String,
 	password: String,
 	avatar: String,
 	firstName: String,
@@ -15,14 +16,14 @@ var UserSchema =new mongoose.Schema({
 	friend: {
 		id:{
 			type:mongoose.Schema.Types.ObjectId,
-			ref: "Friend"
+			ref: "User"
 		},
 		username: String},
 	allergene: {
 		a_nr: String,
 		a_name: String,
 	},
-	profilbeschreibung: String,
+	bio: String,
 });
 
 UserSchema.plugin(passportLocalMongoose);

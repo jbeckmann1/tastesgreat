@@ -14,13 +14,13 @@
 								<div class="boxed boxed--lg boxed--border">
 									<div id="account-profile" class="account-tab">
 										<h4>Profile</h4>
-										<form>
+										<form action="/users/<%= user._id%>?_method=PUT" method="POST">>
 											<div class="row">
 												<div class="col-md-6">
 													<label>Vorname:</label>
 													<input
 														type="text"
-														name="name"
+														name="user[firstName]"
 														value="<%=user.firstName%>"
 													/>
 												</div>
@@ -28,7 +28,7 @@
 													<label>Nachname:</label>
 													<input
 														type="text"
-														name="display-name"
+														name="user[lastName]"
 														value="<%=user.lastName%>"
 													/>
 												</div>
@@ -36,16 +36,25 @@
 													<label>Username:</label>
 													<input
 														type="text"
-														name="username"
+														name="user[username]"
 														value="<%= user.username%>"
 													/>
 												</div>
+												<div class="col-md-12">
+													<label>Email:</label>
+													<input
+														type="email"
+														name="user[email]"
+														value="<%= user.email%>"
+													/>
+												</div>
+
 
 												<div class="col-md-12">
 													<label>Bio:</label>
 													<textarea
 														rows="4"
-														name="bio"
+														name="user[bio]"
 														value="<%=user.bio%>"
 													></textarea>
 												</div>
@@ -113,7 +122,7 @@
 									</div>
 								</div>
 								</li>
-								<li>
+								<!-- <li>
 									<div class="tab__title">
 										<i class="icon icon--sm block icon-Target-Market"></i>
 										<span class="h5"><p>Merkliste</p></span>
@@ -188,9 +197,9 @@
 							<% }); %>
 							</div>
 		</div></div></div></div>
-						</li>
+						</li> -->
 							
-						<li>
+						<!-- <li>
 							<div class="tab__title">
 								<i class="icon icon--sm block icon-Text-Effect"></i>
 								<span class="h5"><p>Präferenzen</p></span>
@@ -225,12 +234,12 @@
 								<span class="h5"><p>Admin</p> </span>
 							</div>
 							<div class="tab__content">
-								<p class="lead">Neuen Admin hinzufügen</p>
+								<p class="lead">Neuen Admin hinzuf체gen</p>
 								<p class="lead">
-									Gemeldete Beiträge<br />User Suchen und bearbeiten
+									Gemeldete Beitr채ge<br />User Suchen und bearbeiten
 								</p>
 							</div>
-						</li>
+						</li> -->
 					</ul>
 				</div>
 			</div>
