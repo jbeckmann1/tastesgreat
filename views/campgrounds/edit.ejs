@@ -1,2 +1,193 @@
-<%- include("../partials/footer") %>
 <%- include("../partials/header") %>
+</div>
+<div class="container">
+	<form id="rezept" action="/campgrounds/<%= campground._id%>?_method=PUT" method="POST">
+		<div class="row">
+			<div class="col-md-12">
+				<h1>
+					Neues Rezept
+				</h1>
+				<div class="input">
+					<label>Titel:</label>
+					<input
+						autofocus
+						type="text"
+						value="<%=campground.title%>"
+						name="campground[title]"
+						placeholder="Wie lautet der Rezepttitel?"
+					/>
+				</div>
+				<div class="input">
+					<label>Kurzbeschreibung:</label>
+					<textarea
+						value="<%=campground.shortdescription%>"
+						name="campground[shortdescription]"
+						cols="40"
+						rows="3"
+					></textarea>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6">
+				<label>
+					Zutaten:
+				</label>
+
+				<div id="zutaten">
+					<fieldset id="add_zutat">
+						<div class="row">
+							<div class="col-md-5">
+								<input
+									type="text"
+									id="name"
+									value="<%=campground.name%>"
+									name="campground[name]"
+									placeholder="Name"
+								/>
+							</div>
+
+							<div class="col-md-3">
+								<input
+									type="text"
+									id="menge"
+									value="<%=campground.name%>"
+									name="campground[menge]"
+									placeholder="Menge"
+								/>
+							</div>
+
+							<div class="col-md-4">
+								<div class="input-select">
+									<select
+										id="einheit"
+										value="<%=campground.einheit%>"
+										name="campground[einheit]"
+									>
+										<option selected="" value="Default">Einheit</option>
+										<option value="g">g</option>
+										<option value="Stück">Stück</option>
+										<option value="EL">EL</option>
+										<option value="TL">TL</option>
+									</select>
+								</div>
+							</div>
+						</div>
+					</fieldset>
+				</div>
+
+				<span onclick="newElement()" class="btn__text Add btn btn--lg"
+					><i class="fas fa-plus"></i> Zutat</span
+				>
+			</div>
+			<div class="col-md-6">
+				<label>Kategorie:</label>
+				<div class="input-select">
+					<select name="campground[kategorie]">
+						<option selected="" value="<%=campground.kategorie%>Default"
+							>Wähle eine Option</option
+						>
+						<option value="frühstück">Frühstück</option>
+						<option value="mittag">Mittag</option>
+						<option value="abend">Abend</option>
+						<option value="snack">Snack</option>
+					</select>
+				</div>
+				<label>Schwierigkeit</label>
+				<div class="input-select">
+					<select name="campground[schwierigkeit]">
+						<option selected="" value="<%=campground.schwierigkeit%>"
+							>Wähle eine Option</option
+						>
+						<option value="Einfach">Einfach</option>
+						<option value="Mittel">Mittel</option>
+						<option value="Schwer">Schwer</option>
+					</select>
+				</div>
+				<div class="input">
+					<label>Dauer:</label>
+					<input
+						type="text"
+						value="<%=campground.dauer%>"
+						name="campground[dauer]"
+						placeholder="Wieviel Zeit muss man einplanen?"
+					/>
+				</div>
+				<div class="input">
+					<label>Aktive Arbeitszeit:</label>
+					<input
+						type="text"
+						value="<%=campground.aktivearbeitszeit%>"
+						name="campground[aktivearbeitszeit]"
+						placeholder="Wie lange ist die aktive Arbeitszeit?"
+					/>
+				</div>
+				<div class="col-md-3 input-checkbox input-checkbox--switch">
+					Vegetarisch
+					<input
+						id="checkbox-switch"
+						type="checkbox"
+						value="<%=campground.vegetarisch%>"
+						name="campground[vegetarisch]"
+					/>
+					<label for="checkbox-switch"></label>
+				</div>
+
+				<div class="col-md-3 input-checkbox input-checkbox--switch">
+					Vegan
+					<input
+						id="checkbox-switch2"
+						type="checkbox"
+						value="<%=campground.vegan%>"
+						name="campground[vegan]"
+					/>
+					<label for="checkbox-switch2"></label>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div id="schritte">
+					<label>
+						Schritte:
+					</label>
+					<textarea
+						value=""
+						name="campground[schritte]"
+						cols="40"
+						rows="2"
+						placeholder="Was ist der erste Schritt?"
+					></textarea>
+				</div>
+				<span onclick="newSchritt()" class="btn__text Add btn btn--lg"
+					><i class="fas fa-plus"></i> Schritt</span
+				>
+				<div class="input">
+					<label>Bild:</label>
+					<input
+						type="text"
+						value="<%=campground.image%>"
+						name="campground[image]"
+						placeholder="Wie lautet die URL des Bildes?"
+					/>
+				</div>
+				<div class="col-md-3 input-checkbox input-checkbox--switch">
+					Öffentliches Rezept:
+					<input
+						id="checkbox-switch3"
+						type="checkbox"
+						value="<%=campground.isOnline%>"
+						name="campground[isOnline]"
+					/>
+					<label for="checkbox-switch3"></label>
+				</div>
+				<div class="text-center">
+					<button class="Add2 btn--lg btn display-center">
+						<span class="btn__text">Rezept hinzufügen</span>
+					</button>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+<%- include("../partials/footer") %>

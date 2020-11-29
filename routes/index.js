@@ -59,7 +59,7 @@ router.get("/logout", function(req, res){
 	res.redirect("/");
 });
 
-router.get("/users/rezepte/:id", middleware.isLoggedIn, function(req, res){
+router.get("/rezepte/:id", middleware.isLoggedIn, function(req, res){
 Campground.find({"author.id": req.user._id} , function(err, allCampgrounds){
 	res.render("users/meinerezepte", {campgrounds:allCampgrounds})
 	
