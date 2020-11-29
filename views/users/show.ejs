@@ -14,7 +14,7 @@
 								<div class="boxed boxed--lg boxed--border">
 									<div id="account-profile" class="account-tab">
 										<h4>Profile</h4>
-										<form action="/users/<%= user._id%>?_method=PUT" method="POST">>
+										<form action="/users/<%= user._id%>?_method=PUT" method="POST">
 											<div class="row">
 												<div class="col-md-6">
 													<label>Vorname:</label>
@@ -53,10 +53,10 @@
 												<div class="col-md-12">
 													<label>Bio:</label>
 													<textarea
-														rows="4"
+	type="text"													rows="4"
 														name="user[bio]"
-														value="<%=user.bio%>"
-													></textarea>
+													
+															  ><%=user.bio%></textarea>
 												</div>
 												<div class="col-md-12">
 													<div
@@ -89,7 +89,7 @@
 											</div>
 										</form>
 										<hr />
-										<h4>Passwort</h4>
+										<!-- <h4>Passwort</h4>
 
 										<form>
 											<div class="row">
@@ -117,7 +117,7 @@
 													</button>
 												</div>
 											</div>
-										</form>
+										</form> -->
 									</div>
 									</div>
 								</div>
