@@ -18,8 +18,7 @@ res.render("campgrounds/neu", {Zutaten: Zutaten});
 
 //Index Show all campgrounds
 router.get("/", function(req, res){
-	
-
+	if(req.isAuthenticated()){
     if(req.query.search) {
         const regex = new RegExp(escapeRegex(req.query.search), 'gi');
         // Get all campgrounds from DB
@@ -37,14 +36,39 @@ router.get("/", function(req, res){
            }
         });
     } else {	
-	Campground.find({isOnline: true, "author.id": req.user._id} , function(err, allCampgrounds){
+	Campground.find({$or:[{isOnline: true}, {"author.id": req.user._id}]} , function(err, allCampgrounds){
 				  if(err){
 		console.log(err);}else {
 					res.render("campgrounds/index", {campgrounds:allCampgrounds});
 }
 								  });
 	}
-		
+} else {
+		  if(req.query.search) {
+        const regex = new RegExp(escapeRegex(req.query.search), 'gi');
+        // Get all campgrounds from DB
+        Campground.find({title: regex}, function(err, allCampgrounds){
+           if(err){
+               console.log(err);
+           } else {
+              if(allCampgrounds.length < 1) {
+                  req.flash("error", "No campgrounds match that query, please try again.");
+				  return res.redirect("back");
+						
+              }
+			  
+              res.render("campgrounds/index",{campgrounds:allCampgrounds});
+           }
+        });
+    } else {	
+	Campground.find({isOnline: true} , function(err, allCampgrounds){
+				  if(err){
+		console.log(err);}else {
+					res.render("campgrounds/index", {campgrounds:allCampgrounds});
+}
+								  });
+	} 
+		   }	
 	
 });
 // router.post("/", middleware.isLoggedIn,  function(req, res){
