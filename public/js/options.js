@@ -276,3 +276,5 @@ function newSchritt(){
 	schritt.rows ="2";
 	document.getElementById("schritte").appendChild(schritt);
 }
+
+

@@ -1,0 +1,29 @@
+
+section:first-child{
+	padding-bottom:0;
+}
+
+#landing{
+	position:relative;
+
+	z-index: 500;
+	bottom: 9rem
+	
+}
+div>.col-md-8>#landing_logo{
+	margin-top:10em
+	
+}
+#Suchleiste{
+
+}
+#vorschlag{
+	
+		bottom: 12rem
+}
+#typo{
+	z-index: 500;
+}
+#blog{
+margin-top:7.42857143rem;
+}

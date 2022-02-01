@@ -1,0 +1,26 @@
+<%- include("partials/header") %>
+<multiselect-combo-box id="allowCustomValuesDemo" label="Allows input of custom values" placeholder="Select existing or input custom value" allow-custom-values>
+</multiselect-combo-box>
+<script>
+  window.addEventListener('WebComponentsReady', function() {
+	  import 'multiselect-combo-box/multiselect-combo-box.js';
+    const customValuesMultiselectComboBox = document.querySelector('#allowCustomValuesDemo');
+    customValuesMultiselectComboBox.items = [
+      'Hydrogen', 'Helium', 'Lithium', 'Beryllium'
+    ];
+    customValuesMultiselectComboBox.selectedItems = [
+      'Helium',
+      'Lithium'
+    ];
+
+    // handle the `custom-values-set` event
+    customValuesMultiselectComboBox.addEventListener('custom-values-set', function(event) {
+      customValuesMultiselectComboBox.items.push(event.detail);
+      const selectedItemsUpdate = customValuesMultiselectComboBox.selectedItems.slice(0);
+      selectedItemsUpdate.push(event.detail);
+      customValuesMultiselectComboBox.selectedItems = selectedItemsUpdate;
+    });
+  });
+</script>
+
+<%- include("partials/footer") %>

@@ -1,34 +1,36 @@
-<%- include("../partials/header") %>
+<%- include("../partials/header") %></div>
+
+
 	<div class="container">
 <div class="row">
 	<div class="col-md-12">
 
 
 
-    	<div class="masonry">          
-			<div class="masonry__container row masonry--active">
+   <div class="masonry">          
+			<div class="masonry__container  row masonry--active">
 				
 				<% campgrounds.forEach(function(campground){ %>
 		
-             <div class="masonry__item col-md-3 col-12 filter-digital" data-masonry-filter="Digital">
-                                <div class="project-thumb hover-element border--round">
-                                    <a href="/campgrounds/<%= campground._id %>">
-                                        <div class="hover-element__initial">
-                                            <div class="background-image-holder"> <img alt="background" src="<%= campground.image %>"> </div>
+           <div class="masonry__item col-md-3 col-12 filter-digital" data-masonry-filter="Digital">
+			   <div class="card card-2 text-center">
+                                    <div class="card__top">
+                                        <a href="/campgrounds/<%= campground._id %>"> <img alt="" src="<%=campground.image%>"> </a>
+                                    </div>
+                                   
+                                    <div class="card__bottom text-center">
+                                        <div class="card__action"> <span class="h6 type--uppercase">Explore</span>
+                                            <a href="/campgrounds/<%= campground._id %>"> <i class="material-icons">flip_to_front</i> </a>
                                         </div>
-                                        <div class="hover-element__reveal" data-scrim-top="5">
-                                            <div class="project-thumb__title">
-                                                <h4><%= campground.name %></h4> <span><%= campground.dauer%></span> </div>
+										
+                                        <div class="card__action"> <span class="h6 type--uppercase">Save</span>
+                                            <a href="#"> <i class="material-icons">favorite_border</i> </a>
                                         </div>
-                                    </a>
-                                </div>
-                            </div>
+                                    </div>
+			   </div></div>
 							<% }); %>
-                          
+	   </div></div>
 			</div>
     	</div>
-	</div>
-</div>
-                   
-								
+		</div>
 <%- include("../partials/footer") %>

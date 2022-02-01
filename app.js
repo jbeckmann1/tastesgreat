@@ -1,22 +1,25 @@
+//import libraries
 var express = require("express"),
 app = express(),
 bodyParser =require("body-parser"),
 mongoose = require('mongoose'),
-	flash =require("connect-flash"),
+flash =require("connect-flash"),
 passport =require("passport"),
-LocalStrategy =require("passport-local"),
-	methodOverride = require("method-override"),
-
+LocalStrategy = require("passport-local"),
+methodOverride = require("method-override"),
+//Import mongoose Models
 Campground =require("./models/campground"),
 Comment =require("./models/comment"),
 User= require("./models/user")
-// seedDB =require("./seeds")
-
+//Import Routes
 var commentRoutes =require("./routes/comments"),
 	campgroundRoutes =require("./routes/campgrounds"),
 	indexRoutes =require("./routes/index")
 app.use(flash());
+
+// seedDB =require("./seeds")
 //seedDB();
+
 //Passport Configuration
 app.use(require("express-session")({
 		secret: "Beste App du weisst",
@@ -38,7 +41,7 @@ app.use(function(req, res, next){
 	next();
 });
 
-mongoose.connect('mongodb://localhost/yelp_campv12', {
+mongoose.connect('mongodb://localhost/tastesgreat', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })

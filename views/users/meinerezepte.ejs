@@ -1,0 +1,39 @@
+<%- include("../partials/header") %>
+</div>
+<div class="main-container">
+	
+
+<div class="container">
+											<div class="row justify-content-center">
+											
+	<div class="col-md-12">
+
+
+
+    	<div class="masonry">          
+			<div class="masonry__container row masonry--active">
+				
+				<% campgrounds.forEach(function(campground){ %>
+		
+             <div class="masonry__item col-md-3 col-12 filter-digital" data-masonry-filter="Digital">
+                                <div class="project-thumb hover-element border--round">
+                                    <a href="/campgrounds/<%= campground._id %>">
+                                        <div class="hover-element__initial">
+                                            <div class="background-image-holder"> <img alt="background" src="<%= campground.image %>"> </div>
+                                        </div>
+                                        <div class="hover-element__reveal" data-scrim-top="5">
+                                            <div class="project-thumb__title">
+                                                <h4><%= campground.name %></h4> <span><%= campground.dauer%></span> </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+							<% }); %>
+                          
+
+    	</div>
+	</div>
+																	</div>
+	</div>												</div>
+															</div>
+<%- include("../partials/footer") %>
