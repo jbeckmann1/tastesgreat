@@ -1,17 +1,17 @@
 
-var Campground = require("../models/campground");
+var Recipe = require("../models/recipe");
 var Comment =require("../models/comment");
 var User =require("../models/user")
 var middlewareObj ={};
-middlewareObj.checkCampgroundOwnership = function(req, res, next){
+middlewareObj.checkRecipeOwnership = function(req, res, next){
 	if(req.isAuthenticated()){
-		Campground.findById(req.params.id, function(err, foundCampground){
+		Recipe.findById(req.params.id, function(err, foundRecipe){
 			if(err){
-				req.flash("error", "Campground not found")
+				req.flash("error", "recipe not found")
 				res.redirect("back");
 			} else {
 			
-				if(foundCampground.author.id.equals(req.user._id) || req.user.isAdmin){
+				if(foundRecipe.author.id.equals(req.user._id) || req.user.isAdmin){
 					next();
 				}else {
 					req.flash("error", "You dont have permission to do that")

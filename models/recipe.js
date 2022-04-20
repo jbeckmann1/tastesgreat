@@ -3,7 +3,7 @@ var mongoose = require("mongoose")
 
 
 
-var campgroundSchema = new mongoose.Schema({
+var recipeSchema = new mongoose.Schema({
 	title: String, 
 	zutaten: [{
 		name: String,
@@ -53,4 +53,4 @@ var campgroundSchema = new mongoose.Schema({
 });
 
 
-module.exports = mongoose.model("Campground", campgroundSchema);
+module.exports = mongoose.model("Recipe", recipeSchema);
