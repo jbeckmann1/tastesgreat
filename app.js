@@ -1,3 +1,9 @@
+//Import MongoDB Atlas url
+if (process.env.NODE_ENV !== "production"){
+	require('dotenv').config({ path: './.env' })
+	
+}
+const dbUrl = process.env.DB_URL
 //import libraries
 var express = require("express"),
 app = express(),
@@ -17,8 +23,6 @@ var commentRoutes =require("./routes/comments"),
 	indexRoutes =require("./routes/index")
 app.use(flash());
 
-// seedDB =require("./seeds")
-//seedDB();
 
 //Passport Configuration
 app.use(require("express-session")({
@@ -40,8 +44,8 @@ app.use(function(req, res, next){
 	res.locals.success =req.flash("success");
 	next();
 });
-
-mongoose.connect('mongodb://localhost/tastesgreat', {
+// mongodb://localhost:27017/yelp-camp
+mongoose.connect(dbUrl, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
