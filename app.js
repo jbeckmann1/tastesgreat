@@ -25,9 +25,10 @@ var commentRoutes =require("./routes/comments"),
 app.use(flash());
 const session = require("express-session")
 const MongoStore = require('connect-mongo');
+const secret = process.env.SECRET || "Beste App du weisst"
 const store = new MongoStore({
 	mongoUrl: process.env.DB_URL,
-	secret:"Beste App du weisst",
+	secret,
 	touchAfter: 24 * 60 * 60,
 })
 store.on("error",function (e) {
@@ -37,7 +38,7 @@ store.on("error",function (e) {
 app.use(session({
 store,
 
-		secret: "Beste App du weisst",
+		secret,
 		resave: false,
 		saveUninitialized: false
 }));
