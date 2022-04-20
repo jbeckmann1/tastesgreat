@@ -10,17 +10,17 @@
    <div class="masonry">          
 			<div class="masonry__container  row masonry--active">
 				
-				<% campgrounds.forEach(function(campground){ %>
+				<% recipes.forEach(function(recipe){ %>
 		
            <div class="masonry__item col-md-3 col-12 filter-digital" data-masonry-filter="Digital">
 			   <div class="card card-2 text-center">
                                     <div class="card__top">
-                                        <a href="/campgrounds/<%= campground._id %>"> <img alt="" src="<%=campground.image%>"> </a>
+                                        <a href="/recipes/<%= recipe._id %>"> <img alt="" src="<%=recipe.image%>"> </a>
                                     </div>
                                    
                                     <div class="card__bottom text-center">
                                         <div class="card__action"> <span class="h6 type--uppercase">Explore</span>
-                                            <a href="/campgrounds/<%= campground._id %>"> <i class="material-icons">flip_to_front</i> </a>
+                                            <a href="/recipes/<%= recipe._id %>"> <i class="material-icons">flip_to_front</i> </a>
                                         </div>
 										
                                         <div class="card__action"> <span class="h6 type--uppercase">Save</span>

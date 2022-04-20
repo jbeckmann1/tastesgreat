@@ -1,7 +1,7 @@
 <%- include("../partials/header") %>
 </div>
 <div class="container">
-	<form id="rezept" action="/campgrounds/<%= campground._id%>?_method=PUT" method="POST">
+	<form id="rezept" action="/recipes/<%= recipe._id%>?_method=PUT" method="POST">
 		<div class="row">
 			<div class="col-md-12">
 				<h1>
@@ -12,16 +12,16 @@
 					<input
 						autofocus
 						type="text"
-						value="<%=campground.title%>"
-						name="campground[title]"
+						value="<%=recipe.title%>"
+						name="recipe[title]"
 						placeholder="Wie lautet der Rezepttitel?"
 					/>
 				</div>
 				<div class="input">
 					<label>Kurzbeschreibung:</label>
 					<textarea
-						value="<%=campground.shortdescription%>"
-						name="campground[shortdescription]"
+						value="<%=recipe.shortdescription%>"
+						name="recipe[shortdescription]"
 						cols="40"
 						rows="3"
 					></textarea>
@@ -41,8 +41,8 @@
 								<input
 									type="text"
 									id="name"
-									value="<%=campground.name%>"
-									name="campground[name]"
+									value="<%=recipe.name%>"
+									name="recipe[name]"
 									placeholder="Name"
 								/>
 							</div>
@@ -51,8 +51,8 @@
 								<input
 									type="text"
 									id="menge"
-									value="<%=campground.name%>"
-									name="campground[menge]"
+									value="<%=recipe.name%>"
+									name="recipe[menge]"
 									placeholder="Menge"
 								/>
 							</div>
@@ -61,8 +61,8 @@
 								<div class="input-select">
 									<select
 										id="einheit"
-										value="<%=campground.einheit%>"
-										name="campground[einheit]"
+										value="<%=recipe.einheit%>"
+										name="recipe[einheit]"
 									>
 										<option selected="" value="Default">Einheit</option>
 										<option value="g">g</option>
@@ -83,8 +83,8 @@
 			<div class="col-md-6">
 				<label>Kategorie:</label>
 				<div class="input-select">
-					<select name="campground[kategorie]">
-						<option selected="" value="<%=campground.kategorie%>Default"
+					<select name="recipe[kategorie]">
+						<option selected="" value="<%=recipe.kategorie%>Default"
 							>Wähle eine Option</option
 						>
 						<option value="frühstück">Frühstück</option>
@@ -95,8 +95,8 @@
 				</div>
 				<label>Schwierigkeit</label>
 				<div class="input-select">
-					<select name="campground[schwierigkeit]">
-						<option selected="" value="<%=campground.schwierigkeit%>"
+					<select name="recipe[schwierigkeit]">
+						<option selected="" value="<%=recipe.schwierigkeit%>"
 							>Wähle eine Option</option
 						>
 						<option value="Einfach">Einfach</option>
@@ -108,8 +108,8 @@
 					<label>Dauer:</label>
 					<input
 						type="text"
-						value="<%=campground.dauer%>"
-						name="campground[dauer]"
+						value="<%=recipe.dauer%>"
+						name="recipe[dauer]"
 						placeholder="Wieviel Zeit muss man einplanen?"
 					/>
 				</div>
@@ -117,8 +117,8 @@
 					<label>Aktive Arbeitszeit:</label>
 					<input
 						type="text"
-						value="<%=campground.aktivearbeitszeit%>"
-						name="campground[aktivearbeitszeit]"
+						value="<%=recipe.aktivearbeitszeit%>"
+						name="recipe[aktivearbeitszeit]"
 						placeholder="Wie lange ist die aktive Arbeitszeit?"
 					/>
 				</div>
@@ -127,8 +127,8 @@
 					<input
 						id="checkbox-switch"
 						type="checkbox"
-						value="<%=campground.vegetarisch%>"
-						name="campground[vegetarisch]"
+						value="<%=recipe.vegetarisch%>"
+						name="recipe[vegetarisch]"
 					/>
 					<label for="checkbox-switch"></label>
 				</div>
@@ -138,8 +138,8 @@
 					<input
 						id="checkbox-switch2"
 						type="checkbox"
-						value="<%=campground.vegan%>"
-						name="campground[vegan]"
+						value="<%=recipe.vegan%>"
+						name="recipe[vegan]"
 					/>
 					<label for="checkbox-switch2"></label>
 				</div>
@@ -153,7 +153,7 @@
 					</label>
 					<textarea
 						value=""
-						name="campground[schritte]"
+						name="recipe[schritte]"
 						cols="40"
 						rows="2"
 						placeholder="Was ist der erste Schritt?"
@@ -166,8 +166,8 @@
 					<label>Bild:</label>
 					<input
 						type="text"
-						value="<%=campground.image%>"
-						name="campground[image]"
+						value="<%=recipe.image%>"
+						name="recipe[image]"
 						placeholder="Wie lautet die URL des Bildes?"
 					/>
 				</div>
@@ -176,8 +176,8 @@
 					<input
 						id="checkbox-switch3"
 						type="checkbox"
-						value="<%=campground.isOnline%>"
-						name="campground[isOnline]"
+						value="<%=recipe.isOnline%>"
+						name="recipe[isOnline]"
 					/>
 					<label for="checkbox-switch3"></label>
 				</div>
