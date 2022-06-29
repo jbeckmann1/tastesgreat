@@ -7,8 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://jbeckmann1:m1u0u1s0l9i7@github.com/jbeckmann1/tastesgreat.git"
+    "type": "git"
   },
   "author": "Johannes Beckmann",
   "license": "ISC",
@@ -20,6 +19,7 @@
     "@fortawesome/fontawesome-free": "^5.15.1",
     "body-parser": "^1.19.0",
     "connect-flash": "^0.1.1",
+    "connect-mongo": "^4.6.0",
     "dotenv": "^16.0.0",
     "ejs": "^3.1.5",
     "express": "^4.17.1",

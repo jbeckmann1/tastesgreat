@@ -10,6 +10,7 @@ app = express(),
 bodyParser =require("body-parser"),
 mongoose = require('mongoose'),
 flash =require("connect-flash"),
+
 passport =require("passport"),
 LocalStrategy = require("passport-local"),
 methodOverride = require("method-override"),
@@ -22,11 +23,22 @@ var commentRoutes =require("./routes/comments"),
 	campgroundRoutes =require("./routes/campgrounds"),
 	indexRoutes =require("./routes/index")
 app.use(flash());
-
-
+const session = require("express-session")
+const MongoStore = require('connect-mongo');
+const secret = process.env.SECRET || "Beste App du weisst"
+const store = new MongoStore({
+	mongoUrl: process.env.DB_URL,
+	secret,
+	touchAfter: 24 * 60 * 60,
+})
+store.on("error",function (e) {
+	console.log("Session store error")
+})
 //Passport Configuration
-app.use(require("express-session")({
-		secret: "Beste App du weisst",
+app.use(session({
+store,
+
+		secret,
 		resave: false,
 		saveUninitialized: false
 }));
