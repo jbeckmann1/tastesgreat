@@ -2,7 +2,7 @@ var express = require("express");
 var router =express.Router();
 var passport =require("passport");
 var User =require("../models/user");
-var Campground = require("../models/campground");
+var Recipe = require("../models/recipe");
 var middleware =require("../middleware")
 
 router.get("/", function(req, res){
@@ -34,7 +34,7 @@ router.post("/register", function(req, res){
 	}
 	passport.authenticate("local")(req, res, function(){
 		req.flash("success", "Welcome to TastesGreat " + user.username);
-		res.redirect("/campgrounds")
+		res.redirect("/recipes")
 	});
 });
 });
@@ -47,7 +47,7 @@ router.get("/login", function(req, res){
 
 //handling login logic
 router.post("/login", passport.authenticate("local", 
-								{successRedirect: "/campgrounds",
+								{successRedirect: "/recipes",
 								 failureRedirect: "/login"
 								}),function(req, res){
 	
@@ -60,18 +60,18 @@ router.get("/logout", function(req, res){
 });
 
 router.get("/rezepte/:id", middleware.isLoggedIn, function(req, res){
-Campground.find({"author.id": req.user._id} , function(err, allCampgrounds){
-	res.render("users/meinerezepte", {campgrounds:allCampgrounds})
+Recipe.find({"author.id": req.user._id} , function(err, allRecipes){
+	res.render("users/meinerezepte", {recipes:allRecipes})
 	
 });
 });
 
 // Update Profil
 router.put("/users/:id", middleware.checkProfileOwnership, function(req, res){
-	//find and update the correct campgrounds
+	//find and update the correct recipes
 	User.findByIdAndUpdate(req.params.id, req.body.user, function(err, updatedProfil){
 		if(err){
-			res.redirect("/campgrounds")
+			res.redirect("/recipes")
 		} else {
 			res.redirect("/users/" + req.params.id)
 		}
@@ -85,12 +85,12 @@ router.get("/users/:id", middleware.checkProfileOwnership, middleware.isLoggedIn
       req.flash("error", "Something went wrong.");
       return res.redirect("/");
     }
-    Campground.find().where('author.id').equals(foundUser._id).exec(function(err, campgrounds) {
+    Recipe.find().where('author.id').equals(foundUser._id).exec(function(err, recipes) {
       if(err) {
         req.flash("error", "Something went wrong.");
         return res.redirect("/");
       }
-      res.render("users/show", {user: foundUser, campgrounds: campgrounds});
+      res.render("users/show", {user: foundUser, recipes: recipes});
     })
   });
 });
@@ -103,12 +103,12 @@ router.get("/profile/:id",  function(req, res) {
       req.flash("error", "Something went wrong.");
       return res.redirect("/");
     }
-    Campground.find().where('author.id').equals(foundUser._id).exec(function(err, campgrounds) {
+    Recipe.find().where('author.id').equals(foundUser._id).exec(function(err, recipes) {
       if(err) {
         req.flash("error", "Something went wrong.");
         return res.redirect("/");
       }
-      res.render("users/private", {user: foundUser, campgrounds: campgrounds});
+      res.render("users/private", {user: foundUser, recipes: recipes});
     })
   });
 });

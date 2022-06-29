@@ -15,12 +15,12 @@ passport =require("passport"),
 LocalStrategy = require("passport-local"),
 methodOverride = require("method-override"),
 //Import mongoose Models
-Campground =require("./models/campground"),
+Recipe =require("./models/recipe"),
 Comment =require("./models/comment"),
 User= require("./models/user")
 //Import Routes
 var commentRoutes =require("./routes/comments"),
-	campgroundRoutes =require("./routes/campgrounds"),
+	recipeRoutes =require("./routes/recipes"),
 	indexRoutes =require("./routes/index")
 app.use(flash());
 const session = require("express-session")
@@ -73,9 +73,9 @@ app.use(methodOverride("_method"));
 app.use(flash());
 
 app.use(indexRoutes);
-app.use("/campgrounds", campgroundRoutes);
-app.use("/campgrounds/:id/comments", commentRoutes);
-
-app.listen(3000, function() {
-	console.log("Server startet auf Port 3000")
+app.use("/recipes", recipeRoutes);
+app.use("/recipes/:id/comments", commentRoutes);
+const port =process.env.PORT || 3000
+app.listen(port, function() {
+	console.log(`Server startet auf Port ${port}`)
 });

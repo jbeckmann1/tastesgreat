@@ -11,7 +11,7 @@
                                         <div class="tab__title"> <i class="icon icon--sm block icon-Text-Effect"></i> <span class="h5"><p>Zutaten</p></span> </div>
                                         <div class="tab__content">
 											 <section class="text-center imagebg" data-overlay="4">
-                <div class="background-image-holder"> <img alt="background" src="<%= campground.image %>"> </div>
+                <div class="background-image-holder"> <img alt="background" src="<%= recipe.image %>"> </div>
                 <div class="container">
                     <div class="row">
                         <div class="col-md-10 col-lg-8">
@@ -29,22 +29,22 @@
                                         <div class="tab__title"> <i class="icon icon--sm block icon-Target-Market"></i> <span class="h5"><p>Anleitung</p></span> </div>
                                         <div class="tab__content">
 											<p class="lead">
-												<%=campground.description.schritt_1 %>
+												<%=recipe.description.schritt_1 %>
 											</p>
 											<p class="lead">
-												<%=campground.description.schritt_2 %>
+												<%=recipe.description.schritt_2 %>
 											</p>
 											<p class="lead">
-												<%=campground.description.schritt_3 %>
+												<%=recipe.description.schritt_3 %>
 											</p>
 											<p class="lead">
-												<%=campground.description.schritt_4 %>
+												<%=recipe.description.schritt_4 %>
 											</p>
 											<p class="lead">
-												<%=campground.description.schritt_5 %>
+												<%=recipe.description.schritt_5 %>
 											</p>
 											<p class="lead">
-												<%=campground.description.schritt_6 %>
+												<%=recipe.description.schritt_6 %>
 											</p>
                                             <p class="lead">  </p>
                                         </div>
@@ -52,9 +52,9 @@
                                     <li>
                                         <div class="tab__title"> <i class="icon icon--sm block icon-Love-User"></i> <span class="h5"><p>Kommentare</p></span> </div>
                                         <div class="tab__content">
-                                            <a class="btn btn-success" href="/campgrounds/<%=campground._id%>/comments/new">Add new comment</a>
+                                            <a class="btn btn-success" href="/recipes/<%=recipe._id%>/comments/new">Add new comment</a>
 											<hr>
-											 <% campground.comments.forEach(function(comment){ %>
+											 <% recipe.comments.forEach(function(comment){ %>
 				<div class="row">
 					<div class="col-md-12">
 						<strong><%= comment.author.username %></strong>
@@ -62,9 +62,9 @@
 						<p>
 							<%=comment.text%>
 						</p>
-						<% if(currentUser && campground.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin){ %>
-						<a class="btn btn-warning" href="/campgrounds/<%=campground._id%>/comments/<%=comment._id%>/edit">Edit</a>
-						<form class="delete-form" action="/campgrounds/<%=campground._id%>/comments/<%=comment._id%>?_method=DELETE" method="POST">
+						<% if(currentUser && recipe.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin){ %>
+						<a class="btn btn-warning" href="/recipes/<%=recipe._id%>/comments/<%=comment._id%>/edit">Edit</a>
+						<form class="delete-form" action="/recipes/<%=recipe._id%>/comments/<%=comment._id%>?_method=DELETE" method="POST">
 						
 							<input type="submit" class="btn btn-danger" value="Delete">
 						</form>	<% } %>
@@ -78,11 +78,11 @@
                                 </ul>
 						
 <p class="card-text">
-						<em>Hochgeladen von <a href="/users/<%= campground.author.id %>"><%= campground.author.username %></a></em>
+						<em>Hochgeladen von <a href="/users/<%= recipe.author.id %>"><%= recipe.author.username %></a></em>
 					</p>
-					<% if(currentUser && campground.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin){ %>
-					<a class= "btn btn-warning" href="/campgrounds/<%= campground._id %>/edit">Edit</a>
-					<form class="delete-form" action="/campgrounds/<%= campground._id %>?_method=DELETE" method="POST">
+					<% if(currentUser && recipe.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin){ %>
+					<a class= "btn btn-warning" href="/recipes/<%= recipe._id %>/edit">Edit</a>
+					<form class="delete-form" action="/recipes/<%= recipe._id %>?_method=DELETE" method="POST">
 						<button class="btn btn-danger">Delete</button>
 						
 					</form>
